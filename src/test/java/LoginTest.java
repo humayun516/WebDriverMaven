@@ -3,6 +3,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -12,6 +13,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class LoginTest {
 
 	public static WebDriver driver;
+	public WebDriverWait wait;
 
 	@BeforeSuite
 	public void setUp() {
@@ -23,14 +25,15 @@ public class LoginTest {
 	}
 
 	@Test
-	public void doLogin() {
+	public void doLogin() throws InterruptedException {
 
-		driver.get("https://www.zoho.com/");
-		driver.findElement(By.xpath("//a[@class='zh-login']")).click();
-		driver.findElement(By.xpath("//input[@id='login_id']")).sendKeys("humayunnasir1@yahoo.com");
-		driver.findElement(By.xpath("//form[@id='login']//button[@id='nextbtn']")).click();
-		driver.findElement(By.id("password")).sendKeys("Engineer_2018");
-		driver.findElement(By.cssSelector("#nextbtn")).click();
+		driver.get("http://www.way2automation.com/angularjs-protractor/banking/#/");
+		driver.findElement(By.xpath("//button[contains(text(),'Bank Manager Login')]")).click();
+		driver.findElement(By.xpath("//button[contains(text(),'Add Customer')]")).click();
+		driver.findElement(By.xpath("//input[@placeholder='First Name']")).sendKeys("Ben");
+		driver.findElement(By.xpath("//input[@placeholder='Last Name']")).sendKeys("Ten");
+		driver.findElement(By.xpath("//input[@placeholder='Post Code']")).sendKeys("076");
+
 	}
 
 	@AfterSuite
